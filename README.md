@@ -1,7 +1,7 @@
 
-## Smart Contracts Audit Findings
+# Smart Contracts Audit Findings
 
-# Unhandled return values of transfer and transferFrom
+## Unhandled return values of transfer and transferFrom
 
 ERC20 implementations are not always consistent. Some implementations of transfer and transferFrom could return ‘false’ on failure instead of reverting. It is safer to wrap such calls into require() statements to these failures.
 
