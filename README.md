@@ -17,4 +17,10 @@ Recommendation: A reentrancy guard (mutex) should be used to prevent such attack
 
 Critical severity finding from https://lnkd.in/dQ4tqvRG
 
-#audit #smartcontracts #security #blockchain
+## Tokens with more than 18 decimal points will cause issues:
+
+It is assumed that the maximum number of decimals for each token is 18. However uncommon, it is possible to have tokens with more than 18 decimals, as example YAMv2 has 24 decimals. This can result in broken code flow and unpredictable outcomes
+
+Recommendation: Make sure the code won’t fail in case the token’s decimals are more than 18
+
+Major severity finding from https://lnkd.in/digeFy6Z
