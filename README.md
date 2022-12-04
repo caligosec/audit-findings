@@ -24,3 +24,11 @@ It is assumed that the maximum number of decimals for each token is 18. However 
 Recommendation: Make sure the code won’t fail in case the token’s decimals are more than 18
 
 Major severity finding from https://lnkd.in/digeFy6Z
+
+## Error codes of Compound’s Comptroller.enterMarket, Comptroller.exitMarket are not checked
+
+Compound’s enterMarket/exitMarket functions return an error code instead of reverting in case of failure. DeFi Saver smart contracts never check for the error codes returned from Compound smart contracts.
+
+Recommendation: Caller contract should revert in case the error code is not 0
+
+Major severity finding from https://lnkd.in/dYW_tYGt
