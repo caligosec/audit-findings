@@ -32,3 +32,13 @@ Compound’s enterMarket/exitMarket functions return an error code instead of re
 Recommendation: Caller contract should revert in case the error code is not 0
 
 Major severity finding from https://lnkd.in/dYW_tYGt
+
+Smart Contract Audits Vulnerability - 5
+
+## Reversed order of parameters in allowance function call
+
+The parameters that are used for the allowance function call are not in the same order that is used later in the call to safeTransferFrom.
+
+Recommendation: Reverse the order of parameters in allowance function call to fit the order that is in the safeTransferFrom function call.
+
+Medium severity finding from https://lnkd.in/dXFGJG83
