@@ -42,3 +42,11 @@ The parameters that are used for the allowance function call are not in the same
 Recommendation: Reverse the order of parameters in allowance function call to fit the order that is in the safeTransferFrom function call.
 
 Medium severity finding from https://lnkd.in/dXFGJG83
+
+## Token approvals can be stolen in DAOfiV1Router01.addLiquidity()
+
+DAOfiV1Router01.addLiquidity() creates the desired pair contract if it does not already exist, then transfers tokens into the pair and calls DAOfiV1Pair.deposit(). There is no validation of the address to transfer tokens from, so an attacker could pass in any address with nonzero token approvals to DAOfiV1Router. This could be used to add liquidity to a pair contract for which the attacker is the pairOwner, allowing the stolen funds to be retrieved using DAOfiV1Pair.withdraw().
+
+Recommendation: Transfer tokens from msg.sender instead of lp.sender
+
+Critical severity finding from https://lnkd.in/dqWidr9H
